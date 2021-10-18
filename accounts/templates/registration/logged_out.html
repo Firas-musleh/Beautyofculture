@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% load static%}
+{% block content %}
+<main class="mt-5">
+    <div class="container mynav">
+
+
+{% block content %}
+  <p>{% trans' Logged out!' %}</p>  
+  <a href="{% url 'login'%}">{% trans 'Klicka här för att logga in igen.' %}</a>
+{% endblock content %}
+
+</div>
+</main>
+{% endblock content %}

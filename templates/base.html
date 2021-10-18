@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+{% load i18n %}
+{% load currency %}
+{%load static%}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_current_language_bidi as LANGUAGE_BIDI %}
+<html lang="{{ LANGUAGE_CODE }}"  dir="auto">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Beautyofculture</title>
+</head>
+<body {% if LANGUAGE_BIDI %}
+  dir="rtl"
+  {% else %}
+  dir="ltr"
+  {% endif %}>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {% if user.is_authenticated %}
+            <li>
+                <button type="button" class="btn btn-outline-danger">
+            
+                    <a id="logg" href="{% url 'logout'%}">{% trans 'Logga ut' %}</a>
+                </button>
+            </li>
+            {%endif%}
+            {% if user.is_authenticated == 0 %}
+            <li class="nav-item" style="margin-right:4px;">
+                <a  href="{% url 'login'%}" class="nav-link  rounded waves-effect">
+                    <i class="fas fa-sign-in-alt mr-2 "></i> {% trans 'Logga in' %}
+                </a>
+            </li>
+            {%endif%}
+            {% if user.is_authenticated == 0 %}
+            <li class="nav-item  mr-2">
+                <a href="/accounts/signup" class="nav-link  rounded waves-effect">
+                    <i class="fas fa-user-plus mr-2 "></i> {% trans 'Bli Medlem' %}
+                </a>
+            </li>
+            
+            {%endif%}
+            <!-- Languages -->
+            <li class="mt-2 mx-3">
+                {% get_current_language_bidi as LANGUAGE_BIDI %}
+                {% get_current_language as LANGUAGE_CODE %}
+                <form class='fas fa-globe text-danger' style='font-size:20px' action="{% url 'selectlanguage' %}" method="post">{% csrf_token %}
+                    <input name="next" type="hidden" value="{{ redirect_to }}">
+                    <select name="language" onchange="submit()" style=" border-radius: 15px;">
+            
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% get_available_languages as LANGUAGES %}
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                        <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                            {{ language.name_local }} ({{ language.code }})
+                        </option>
+                        {% endfor %}
+            
+                    </select>
+                    <noscript>
+                        <input type="submit" value="Set" />
+                    </noscript>
+                </form>
+            
+            </li>
+            <!-- End languages -->
+            {% comment %} selectcurrency {% endcomment %}
+             <li class="dropdown default-dropdown mt-2">
+
+
+                        <form id="currency_switcher" method="POST" action="{% url 'selectcurrency' %}">
+                            {% csrf_token %}
+                            <select name="currency" onchange="submit()"style=" border-radius: 15px;" >
+                                {% for curr in CURRENCIES %}
+                                    <option value="{{ curr.code }}"
+                                            {% ifequal curr.code request.session.currency %}selected="selected"{% endifequal %}>
+                                        {{ curr.symbol }} {{ curr.name }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+
+                            <noscript>
+                                <input type="submit" value="Set" />
+                            </noscript>
+
+                        </form>
+                    </li>
+            {% comment %} End selectcurrency {% endcomment %}
+
+            </ul>
+            
+            <a class="nav-link waves-effect " href="/cart/">
+                <span class="badge red z-depth-1 mr-1">
+                    {% with total_items=cart|length %}
+                    {% if cart|length > 0 %}
+            
+                    {{ total_items }}
+            
+            
+                    {% else %}
+                    0
+                    {% endif %}
+                    {% endwith %}
+                   
+                </span>
+                <i class="fas fa-shopping-cart"style=" color: cornsilk;"></i>
+                <span class="clearfix d-none d-sm-inline-block text-danger"> {% trans 'Varukorg' %}</span>
+            
+            </a>
+               
+              
+        </div> 
+
+    </div>
+</nav>
+{% comment %} Nav2 {% endcomment %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+     <a class="navbar-brand text-danger fw-bold fs-2" href="/">Beautyofculture</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-bolder" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          {% trans 'categories'%}
+          </a>
+          <ul class="dropdown-menu opacity-75 bg-dark" aria-labelledby="navbarDropdown">
+           <li><a class="dropdown-item text-light" href="{% url 'ost:product_list' %}">{% trans 'All Products'%}</a></li>
+           {% for c in categories %}
+            <li><a class="dropdown-item text-light" href="{{ c.get_absolute_url }}"> {{ c.name }}</a></li>
+             {% endfor %}
+            
+          </ul>
+        </li>
+       
+</div>
+      </ul>
+       <form action="{% url 'ost:search' %}" method="get" class="d-flex" >
+                <input class="form-control me-2" type="text" name="query" placeholder="{% trans 'Search . . .' %}" aria-label="  Search ">
+                <button class="btn btn-outline-danger" > {% trans 'Search' %}</button>
+            </form>
+    </div>
+  </div>
+</nav>
+
+{% comment %} End nav2 {% endcomment %}
+    {% block content %}
+    
+    {% endblock content %}
+    
+<!--Footer-->
+<footer class="page-footer text-center font-small mt-4 wow fadeIn bg-dark">
+
+    <!--Call to action-->
+    <div class="pt-4">
+        <!-- <a class="btn btn font-weight-bold" style="background-color: white; color: #dd5c35;" href="#"
+            role="button"> {% trans 'Villkor'%}
+
+        </a> -->
+        <!-- <a class="btn btn font-weight-bold" style="background-color: white; color: #dd5c35;" href="#"
+            role="button"> {% trans 'Kundservice'%}
+
+        </a> -->
+        <a class="btn btn font-weight-bold" style="background-color: white; color: #dd5c35;" href="#" role="button"> {% trans 'Om oss'%}
+           
+        
+        </a>
+
+
+    </div>
+    <!--/.Call to action-->
+
+    <hr class="my-4">
+
+    <!-- Social icons -->
+    <div class="pb-4">
+        <!-- <a href="https://www.facebook.com/" target="_blank">
+            <i class="fab fa-facebook-f mr-3"></i>
+        </a> -->
+
+
+        <a class="kont btn btn-outline-secondary" class="contact-toolbar-link" data-contact-action="mobile" href="tel:+46738761844">
+            <i class="fa fa-phone" style="font-size:25px;" aria-hidden="true" role="button">{% trans 'Sverige'%}</i>
+        </a>
+        <a class="btn btn-outline-secondary" class="contact-toolbar-link" data-contact-action="mobile" href="tel:+905079977790">
+            <i class="fa fa-phone" style="font-size:25px;" aria-hidden="true" role="button">{% trans 'Türkiye'%}</i>
+        </a>
+        <a class="btn btn-outline-secondary" href="mailto:hatim_alzaabi@hotmail.com" target="_blank">
+            <i class="fas fa-envelope-open" style="font-size:25px;" aria-hidden="true" role="button">
+                hatim_alzaabi@hotmail.com</i>
+        
+        </a>
+
+
+        {% comment %} <a href="https://www.instagram.com/">
+            <i class="fab fa-instagram mr-3"></i>
+        </a>{% endcomment %}
+
+        <div class="d-flex justify-content-xl-end  ">
+            
+            <li class="ms-list__item m-2 bg-light">
+                <img class="ms-img ms-img--fluid" src="//assets.mmsrg.com/isr/166325/c1/-/
+      msh-pixelboxx-2003374889/feecms_x_x_x" alt="Visa" title="Visa"
+                    srcset="//assets.mmsrg.com/isr/166325/c1/-/msh-pixelboxx-2003374889/feecms_x_x_x 1x">
+            </li>
+            <li class="ms-list__item m-2">
+                <img class="ms-img ms-img--fluid" src="//assets.mmsrg.com/isr/166325/c1/-/
+      msh-pixelboxx-72941883/feecms_x_x_x" alt="Mastercard" title="Mastercard"
+                    srcset="//assets.mmsrg.com/isr/166325/c1/-/msh-pixelboxx-72941883/feecms_x_x_x 1x">
+            </li>
+        </div>
+    </div>
+    <div class="d-flex justify-content-start " style="margin-top:-60px">
+        <li class="ms-list__item">
+            <img class="ms-img ms-img--fluid" src="//assets.mmsrg.com/isr/166325/c1/-/
+      msh-pixelboxx-1495228924/feecms_x_x_x" alt="Trygg E-handel" title="Trygg E-handel"
+                srcset="//assets.mmsrg.com/isr/166325/c1/-/msh-pixelboxx-1495228924/feecms_x_x_x 1x">
+        </li>
+        <li class="ms-list__item ">
+            <img class="ms-img ms-img--fluid" src="//assets.mmsrg.com/isr/166325/c1/-/
+      ms-cms-mmse-l16823881/feecms_x_x_x" alt="Trygg kundkontakt" title="Trygg kundkontakt"
+                srcset="//assets.mmsrg.com/isr/166325/c1/-/ms-cms-mmse-l16823881/feecms_x_x_x 1x">
+        </li>
+        <!-- <li class="ms-list__item ">
+            <img class="ms-img ms-img--fluid" src="//assets.mmsrg.com/isr/166325/c1/-/
+      msh-pixelboxx-1091456073/feecms_x_x_x" alt="Postnord" title="Postnord"
+                srcset="//assets.mmsrg.com/isr/166325/c1/-/msh-pixelboxx-1091456073/feecms_x_x_x 1x">
+        </li> -->
+        <li class="ms-list__item ">
+            <img class="ms-img ms-img--fluid" src="//assets.mmsrg.com/isr/166325/c1/-/
+      msh-pixelboxx-244611208/feecms_x_x_x" alt="DHL" title="DHL"
+                srcset="//assets.mmsrg.com/isr/166325/c1/-/msh-pixelboxx-244611208/feecms_x_x_x 1x">
+        </li>
+    </div>
+    <!-- Social icons -->
+
+    <!--Copyright-->
+    <div class="footer-copyright py-3 text-light">
+        © 2021 Copyright:
+        <a href="/" target="_blank"> Beautyofculture</a>
+    </div>
+    <!--/.Copyright-->
+
+</footer>
+<!-- watsapp -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<a href="https://api.whatsapp.com/send?phone=46738761844" class="float" target="_blank">
+    <i class="fa fa-whatsapp my-float"></i>
+    <p class="qq m-2"></p>
+</a>
+
+
+
+
+
+<!-- CSS -->
+<style>
+    .float {
+        position: fixed;
+
+        width: 60px;
+        height: 60px;
+        bottom: 180px;
+        right: 30px;
+        background-color: #25d366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 2px 2px 3px #999;
+        z-index: 100;
+        color: #000;
+
+    }
+
+    .my-float {
+        margin-top: 16px;
+
+    }
+</style>
+<!-- end watsapp -->
+<!-- Optional JavaScript; choose one of the two! -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+    integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+    integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
+crossorigin="anonymous"></script>    
+</body>
+</html>
+<style>
+    #logg{
+     color: cornsilk; 
+      text-decoration:none;
+    }
+    .dropdown-item:hover{
+        color: #000;
+        text-decoration-color: #000;
+    } 
+    @media (min-width : 1300px) {
+    .float {
+        position: fixed;
+
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 10px;
+        background-color: #25d366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 27px;
+        box-shadow: 2px 2px 3px #999;
+        z-index: 100;
+        color: #000;
+
+    }
+
+    .my-float {
+        margin-top: 11px;
+
+    }
+     
+  }
+
+  @media (max-width : 1300px) {
+     .main{
+      
+      position: absolute;
+    }
+    
+     
+  }
+  @media (min-width : 371px) and (max-width : 1300px) {
+    .navbar-brand{
+        font-size: 18px !important;
+    }
+    .float {
+        position: fixed;
+
+        width: 40px;
+        height: 40px;
+        bottom: 20px;
+        right: 10px;
+        background-color: #25d366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 18px;
+        box-shadow: 2px 2px 3px #999;
+        z-index: 100;
+        color: #000;
+
+    }
+
+    .my-float {
+        margin-top: 12px;
+
+    }
+  }
+
+  @media (min-width : 577px) and (max-width : 1300px) {
+   
+  }
+  @media (min-width : 769px) and (max-width : 1300px) {
+  
+  }
+  @media (min-width : 990px) and (max-width : 1300px) {
+    
+  }
+  @media (min-width : 1181px)  {
+    
+  }
+</style>

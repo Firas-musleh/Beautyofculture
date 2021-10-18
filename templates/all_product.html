@@ -1,0 +1,337 @@
+{% extends 'base.html'%}
+{% load i18n %}
+{% load currency %}
+{% load static%}
+
+{% block content %}
+
+<div class="container-fluid ">
+
+   
+
+<!-- carousel -->
+<div id="carouselExampleFade" class="carousel slide carousel-fade mt-3 " data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            {% for img in imagess %}
+            <img src="{{img.image_1.url}}" class="d-block w-100 " alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="{{img.image_2.url}}" class="d-block w-100 " alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="{{img.image_3.url}}" class="d-block w-100 " alt="...">
+        </div>
+    </div>
+    {%endfor%}
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+</div>
+<!-- End carousel -->
+
+
+<!-- <aside class=" bg-light m-3 "style="box-shadow: 5px 10px 18px #888888;"> 
+
+
+<div class="   m-3 mr-5"style="width:18rem ;">
+     
+
+        <a href="{% url 'ost:product_list' %}" class="list-group-item list-group-item-action">{% trans 'All Products'%}</a>
+
+        {% for c in categories %}
+    <div class="list-group ">
+        <a href="{{ c.get_absolute_url }}" class="list-group-item list-group-item-action " > {{  c.name  }}</a>
+    
+        {% endfor %}
+        
+    </div>  -->
+<!-- <div id="sidebar">
+    <h3>Categories</h3>
+    <ul>
+        <li {% if not category %}class="selected" {% endif %}>
+            <a href="{% url 'ost:product_list' %}">All</a>
+        </li>
+        {% for c in categories %}
+        <li {% if category.slug == c.slug %}class="selected" {% endif %}>
+            <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<div id="main" class="product-list">
+    <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
+</div>  -->
+</aside>
+<!-- End Category -->
+<!-- Book card -->
+
+<div class=" container-lg ">
+<!-- style=" max-height: 18rem;
+min-height:18rem ;" -->
+{% for Produkten in all_prodcut %}
+<div class="card d-inline-flex m-3 justify-content-center" style="width: 18rem;">
+    
+    <a id="tex" href="{% url 'ost:one_prodcut' Produkten.slug %}">
+        
+    <img id="imgg" src="{{Produkten.Book_image.url}}" class="card-img-top " alt="...">
+    
+    </a>
+    
+    <div class="card-body d-grid">
+        <h5 class="card-title"><a id="tex" href="{% url 'ost:one_prodcut' Produkten.slug %}" class="dark-grey-text">{% blocktrans %}{{Produkten }}{% endblocktrans %}
+        
+        </a></h5>
+        
+        <h4 id="tex" class=" blue-text  ">
+            <strong style="color:#e86b29;">
+                {% if Produkten.Discountprice > 0 %}
+                <del><span style="color:#0a0a0a;">SEK-:{{ Produkten.price|currency:request.session.currency}}</span></del><br>
+                <span>{{ Produkten.Discountprice}}:-SEK</span>
+                {%else%}
+                <span>{{ Produkten.price|currency:request.session.currency}}:- {{ request.session.currency }}</span>
+                {%endif%}
+        <p class="card-text">{{product.description}}</p>
+        <a href="{% url 'ost:one_prodcut' Produkten.slug %}" class="btn btn-danger d-grid">{% trans 'Mer' %}</a>
+    </div>
+</div>
+{%endfor%}
+
+<!-- End card -->
+
+<!--Pagination-->
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center  my-4">
+        {% if all_prodcut.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ all_prodcut.previous_page_number }}">{% trans 'Previous' %}</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">{% trans 'Previous' %}</a>
+        </li>
+        {% endif %}
+        {% for i in all_prodcut.paginator.page_range %}
+        {% if all_prodcut.number == i %}
+        <li class="page-item active" aria-current="page">
+            <span class="page-link">
+                {{ i }}
+                <span class="sr-only "></span>
+            </span>
+        </li>
+        {% else %}
+        <li class="page-item"><a class="page-link " href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if all_prodcut.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{all_prodcut.next_page_number }}">{% trans 'Next' %}</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">{% trans 'Next' %}</a>
+        </li>
+        {% endif %}
+    </ul>
+
+</nav>
+<!--End Pagination-->
+</div>
+</section>
+</div>
+</main>
+<style>
+.card{
+    
+  border: 0;
+  padding: 10px;
+  box-shadow: 5px 10px 18px #888888;
+  
+
+}
+.card-img-top:hover{
+    transform: scale(1.08);
+  
+}
+#tex{
+     text-decoration:none;
+       color: #0a0a0a;
+       font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+* {
+  box-sizing: border-box;
+  
+}
+@media (min-width : 350px) and (max-width : 1300px) {
+.card{
+    
+    width: 9rem !important;
+    margin: 8px !important;
+    
+}
+.card-body{
+    height: 12rem ;
+}
+#imgg{
+    max-height: 129px !important;
+    min-height: 129px !important;
+}
+#tex{
+    text-decoration:dashed;
+    color: black;
+    font-size: 13px;
+  }
+.carousel-item{
+    
+    object-fit:cover;
+}
+.btn{
+   font-size: 13px; 
+}  
+}
+@media (min-width : 577px) and (max-width : 1300px) {
+   .card{
+    
+    width: 10rem !important;
+    margin: 8px !important;
+    
+}
+.card-body{
+    height: 12rem ;
+}
+#imgg{
+    max-height: 145px !important;
+    min-height: 145px !important;
+}
+#tex{
+    text-decoration:dashed;
+    color: black;
+    font-size: 13px;
+  }
+.carousel-item{
+    
+    object-fit:cover;
+}
+.btn{
+   font-size: 13px; 
+}  
+  }
+  @media (min-width : 769px) and (max-width : 1300px) {
+  .card{
+    
+    width: 14rem !important;
+    margin: 10px !important;
+    
+}
+.card-body{
+    height: 12rem ;
+}
+#imgg{
+    max-height: 145px !important;
+    min-height: 145px !important;
+}
+#tex{
+    text-decoration:dashed;
+    color: black;
+    font-size: 15px;
+  }
+.carousel-item{
+    
+    object-fit:cover;
+}
+.btn{
+   font-size: 15px; 
+}  
+  }
+  @media (min-width : 990px) and (max-width : 1300px) {
+    .card{
+    
+    width: 16rem !important;
+    margin: 13px !important;
+    
+}
+.card-body{
+    height: 12rem ;
+}
+#imgg{
+    max-height: 175px !important;
+    min-height: 175px !important;
+}
+#tex{
+    text-decoration:dashed;
+    color: black;
+    font-size: 17px;
+  }
+.carousel-item{
+    
+    object-fit:cover;
+}
+.btn{
+   font-size: 17px; 
+}  
+  }
+  @media (min-width : 1181px)  {
+    .card{
+    
+    width: 17rem !important;
+    margin: 14px !important;
+    
+}
+.card-body{
+    height: 12rem ;
+}
+#imgg{
+    max-height: 185px !important;
+    min-height: 185px !important;
+}
+#tex{
+    text-decoration:dashed;
+    color: black;
+    font-size: 18px;
+  }
+.carousel-item{
+    
+    object-fit:cover;
+}
+.btn{
+   font-size: 18px; 
+}  
+  }
+  @media (min-width : 1300px) {
+.card{
+    
+    width: 15rem !important;
+    margin: 20px !important;
+    
+}
+.card-body{
+    height: 12rem ;
+}
+#imgg{
+    max-height: 185px !important;
+    min-height: 185px !important;
+}
+#tex{
+    text-decoration:dashed;
+    color: black;
+    font-size: 18px;
+  }
+.carousel-item{
+    
+    object-fit:cover;
+}
+.btn{
+   font-size: 18px; 
+}  
+  }
+</style>
+
+
+{% endblock content %}

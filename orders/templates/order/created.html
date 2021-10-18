@@ -1,0 +1,72 @@
+{% extends 'base.html'%}
+{% load i18n %}
+{% load static %}
+
+{%block content%}
+
+
+
+
+<div class="bad">
+	<div id="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><h2><a href="/">Beautyofculture</a></h2></li>
+                
+            </ul>
+        </div>
+    </div>
+    <!-- /BREADCRUMB -->
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="order-summary clearfix">
+                        <div class="section-title">
+                            <h3 class="title">{% trans 'Tack för att du köper dina proukter hos oss vi hoppas att du kommer bli nöjd med din beställning.'%}</h3>
+                        </div>
+                        <hr>
+                        <h3>{% trans 'Kära:'%}    {{ order.first_name }} {{  order.last_name }}</h3>
+                        <hr>
+                        <h3>{% trans 'Din beställning är klar' %}</h3>
+                        <h3>{% trans 'Beställningskod :' %}{{ order.id }}</h3>
+                        <h3>{% trans' Stort Tack!'%}</h3>
+                        <hr>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+</div>
+    <!-- /section -->
+
+
+
+
+
+
+
+	
+
+
+
+<style>
+.bad{
+	margin: 10%;
+	
+	
+}
+
+
+</style>
+{%endblock content%}

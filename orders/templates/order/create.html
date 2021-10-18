@@ -1,0 +1,119 @@
+{% extends 'base.html'%}
+{% load i18n %}
+{% load currency %}
+{% load static %}
+{%block content%}
+
+
+
+
+<h1 class="pds ">{% trans 'Snabbkassa'%}</h1>
+
+		<div class="order-info">
+			<div class="container">
+   <div class="border rounded p-4 m-4">
+        <p class="display-4 pl-4 ml-4 bg-danger "style="color:white">{% trans 'Din beställa'%}</p>
+        <hr>
+        <table class="table">
+            <thead>
+		
+                <tr>
+                    <th>{% trans 'Sno.'%}</th>
+                    <th>{% trans 'Bild'%}</th>
+                    <th>{% trans 'Produkt'%}</th>
+                    
+                    <th>{% trans 'Pris'%}</th>
+                    <th>{% trans 'Kvantitet'%}</th>
+                    <th>{% trans 'Total'%}</th>
+                    <th>{% trans 'Status'%}</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for order in cart %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td><img style="height: 80px;" class="rounded-circle" src="{{ order.product.Book_image.url}}" alt=""></td>
+                    <td>{{order.product.name}}</td>
+                   
+                    <td>{{order.total_price|currency:request.session.currency}}:- {{ request.session.currency }}</td>
+                    <td>{{order.quantity}} </td>
+                    <td> {{cart.get_total_price|currency:request.session.currency}}:- {{ request.session.currency }}</td>
+                    {% if order.status %}
+                    <td><small class="badge badge-success text-info">{% trans 'Avslutad'%}</small></td>
+                    {%else%}
+                    <td><small class="badge badge-warning text-danger">{% trans 'I väntan på'%}</small></td>
+                    {% endif %}
+                </tr>
+
+                {% endfor %}
+               
+            </tbody>
+
+        </table>
+       
+   </div>
+</div>
+		</div>
+
+		<form method="post" action="." class="order_form">
+			{% csrf_token %}
+			{{form.as_p}}
+			<button type="submit">{% trans 'Beställa'%}</button>
+		</form>
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    .pds{
+        margin-top: 8%;
+        text-align: center;
+    }
+.order-info{
+	background-color:#F6F5F5;
+	float:right;
+	margin-right: 9%;
+	margin-top: 2%;
+	
+	border-bottom: 2px solid #60d68e;
+	width:50%;
+}
+
+
+
+.order_form{
+	padding:10px;
+	margin-left:10%;
+	width:80%;
+}
+.order_form label{
+	display: block;
+}
+.order_form input,button{
+	width:25%;
+	border:none;
+	padding:10px;
+	background-color:#F3F3F3;
+}
+.order_form button{
+	background-color:#e7443f;
+	color:rgb(7, 6, 6);
+	width:25%;
+	border:none;
+	padding:10px;
+    color: #F3F3F3;
+}
+
+
+
+
+</style>
+{{%endblock content%}

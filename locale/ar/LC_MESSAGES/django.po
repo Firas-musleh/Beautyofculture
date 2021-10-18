@@ -1,0 +1,356 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"Report-Msgid-Bugs-To: webmaster@localhost\n"
+"POT-Creation-Date: 2021-10-18 10:46:44\n"
+"PO-Revision-Date: 2021-10-18 10:46:44\n"
+"Last-Translator: Server <root@localhost>\n"
+"Language-Team: English <webmaster@localhost>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .\accounts\templates\registration\signup.html:129
+msgid " Har du redan ett konto?"
+msgstr "هل لديك حساب بالفعل؟"
+
+#: .\templates\all_product.html:46 .\templates\base.html:155
+msgid "All Products"
+msgstr "جميع المنتجات"
+
+#: .\accounts\templates\registration\password_reset_confirm.html:9
+msgid "Ange (och bekräfta) ditt nya lösenord."
+msgstr "أدخل (وأكد) كلمة المرور الجديدة الخاصة بك."
+
+#: .\templates\cart.html:15
+msgid "Antal"
+msgstr "كمية"
+
+#: .\accounts\templates\registration\login.html:93
+msgid "Användarnamn..."
+msgstr "اسم المستخدم..."
+
+#: .\accounts\templates\registration\signup.html:82
+msgid "Användnamn"
+msgstr "اسم المستخدم"
+
+#: .\project\settings.py:126
+msgid "Arabic"
+msgstr "عربي"
+
+#: .\templates\cart.html:16
+msgid "Avlägsna"
+msgstr "يزيل"
+
+#: .\orders\templates\order\create.html:43
+msgid "Avslutad"
+msgstr "مكتمل"
+
+#: .\accounts\templates\registration\password_reset_confirm.html:20
+msgid "Bekräfta lösenord:"
+msgstr "تأكيد كلمة المرور:"
+
+#: .\orders\templates\order\create.html:62
+msgid "Beställa"
+msgstr "أطلب"
+
+#: .\orders\templates\order\created.html:36
+msgid "Beställningskod :"
+msgstr "رمز الطلب:"
+
+#: .\orders\templates\order\create.html:22
+msgid "Bild"
+msgstr "صورة"
+
+#: .\accounts\templates\registration\login.html:113 .\templates\base.html:56
+msgid "Bli Medlem"
+msgstr "اشتراك"
+
+#: .\templates\one_product.html:101
+msgid "Datum:"
+msgstr "تاريخ:"
+
+#: .\templates\one_product.html:86
+msgid "Description"
+msgstr "وصف"
+
+#: .\templates\cart.html:71
+msgid "Det finns ingen produkt !"
+msgstr "لا يوجد منتج!"
+
+#: .\templates\cart.html:11
+msgid "Din Varukorg"
+msgstr "سلة التسوق الخاصة بك"
+
+#: .\orders\templates\order\create.html:15
+msgid "Din beställa"
+msgstr "طلبك"
+
+#: .\orders\templates\order\created.html:35
+msgid "Din beställning är klar"
+msgstr "طلبك جاهز"
+
+#: .\accounts\templates\registration\signup.html:103
+msgid "E-post.."
+msgstr "بريد الالكتروني.."
+
+#: .\templates\one_product.html:57 .\templates\one_product.html:59
+msgid "Endast:"
+msgstr "فقط:"
+
+#: .\project\settings.py:124
+msgid "English"
+msgstr "إنجليزي"
+
+#: .\templates\cart.html:93
+msgid "Fortsätt handla"
+msgstr "مواصلة التسوق"
+
+#: .\templates\cart.html:18
+msgid "Fraktkostnad"
+msgstr "تكلفة الشحن"
+
+#: .\accounts\templates\registration\login.html:110
+msgid "Glömt lösenord ?"
+msgstr "هل نسيت كلمة السر ؟"
+
+#: .\accounts\templates\registration\login.html:113
+msgid "Har inget konto?"
+msgstr "ليس لديك حساب؟"
+
+#: .\orders\templates\order\create.html:45
+msgid "I väntan på"
+msgstr "قيد الانتظار"
+
+#: .\templates\cart.html:13
+msgid "Image"
+msgstr "صورة"
+
+#: .\templates\one_product.html:110
+msgid "Inga recensioner ännu..."
+msgstr "لا توجد تعليقات حتى الآن ..."
+
+#: .\templates\one_product.html:137
+msgid "Innehåll"
+msgstr "المحتوى"
+
+#: .\accounts\templates\registration\logged_out.html:12
+msgid "Klicka här för att logga in igen."
+msgstr "انقر هنا لتسجيل الدخول مرة أخرى."
+
+#: .\templates\base.html:189
+msgid "Kundservice"
+msgstr "خدمة الزبائن"
+
+#: .\orders\templates\order\create.html:26
+msgid "Kvantitet"
+msgstr "كمية"
+
+#: .\orders\templates\order\created.html:33
+msgid "Kära:"
+msgstr "عزيزي:"
+
+#: .\accounts\templates\registration\login.html:84
+msgid "LOGGA IN"
+msgstr "تسجيل الدخول"
+
+#: .\accounts\templates\registration\signup.html:129 .\templates\base.html:49
+msgid "Logga in"
+msgstr "تسجيل الدخول"
+
+#: .\templates\one_product.html:152
+msgid "Logga in för att lägga till recension!"
+msgstr "تسجيل الدخول لإضافة مراجعة!"
+
+#: .\templates\base.html:42
+msgid "Logga ut"
+msgstr "تسجيل خروج"
+
+#: .\templates\one_product.html:77
+msgid "Lägg i kundvagn"
+msgstr "أضفها الى قائمة المشتريات"
+
+#: .\accounts\templates\registration\password_reset_confirm.html:31
+msgid ""
+"Länken för återställning av lösenord var ogiltig, möjligen för att den redan"
+" har använts. Be om en ny lösenordsåterställning."
+msgstr ""
+"رابط إعادة تعيين كلمة المرور غير صالح ، ربما لأنه تم استخدامه بالفعل. اطلب "
+"إعادة تعيين كلمة مرور جديدة."
+
+#: .\accounts\templates\registration\login.html:99
+msgid "Lösenord..."
+msgstr "كلمه السر..."
+
+#: .\accounts\templates\registration\password_reset_complete.html:8
+msgid "Lösenordet har ändrats!"
+msgstr "تم تغيير كلمة السر!"
+
+#: .\templates\all_product.html:101
+msgid "Mer"
+msgstr "أكثر"
+
+#: .\templates\all_product.html:134 .\templates\all_product.html:138
+msgid "Next"
+msgstr "التالي"
+
+#: .\accounts\templates\registration\password_reset_confirm.html:15
+msgid "Nytt lösenord:"
+msgstr "كلمة مرور جديدة:"
+
+#: .\templates\base.html:192
+msgid "Om oss"
+msgstr "معلومات عنا"
+
+#: .\templates\all_product.html:113 .\templates\all_product.html:117
+msgid "Previous"
+msgstr "سابق"
+
+#: .\orders\templates\order\create.html:25
+msgid "Pris"
+msgstr "السعر"
+
+#: .\orders\templates\order\create.html:23 .\templates\cart.html:14
+msgid "Produkt"
+msgstr "المنتج"
+
+#: .\templates\one_product.html:94
+msgid "Recensioner"
+msgstr "المراجعات"
+
+#: .\accounts\templates\registration\signup.html:122
+msgid "Register Account"
+msgstr "تسجيل حساب"
+
+#: .\accounts\templates\registration\signup.html:70
+msgid "Registrera konto"
+msgstr "تسجيل حساب"
+
+#: .\templates\base.html:167
+msgid "Search"
+msgstr "بحث"
+
+#: .\templates\base.html:166
+msgid "Search . . ."
+msgstr "بحث"
+
+#: .\templates\one_product.html:147
+msgid "Skicka in"
+msgstr "أرسال"
+
+#: .\accounts\templates\registration\signup.html:110
+msgid "Skriv in lösenord..."
+msgstr "أدخل كلمة المرور ..."
+
+#: .\accounts\templates\registration\signup.html:117
+msgid "Skriv lösenordet igen..."
+msgstr "اكتب كلمة المرور مرة أخرى ..."
+
+#: .\orders\templates\order\create.html:10
+msgid "Snabbkassa"
+msgstr "الدفع"
+
+#: .\orders\templates\order\create.html:28
+msgid "Status"
+msgstr "حالة"
+
+#: .\templates\one_product.html:121
+msgid "Stjärnor"
+msgstr "النجوم"
+
+#: .\templates\one_product.html:102
+msgid "Stjärnor:"
+msgstr "النجوم"
+
+#: .\templates\cart.html:17
+msgid "Styckpris"
+msgstr "سعر الوحدة"
+
+#: .\templates\cart.html:19
+msgid "Summa"
+msgstr "المجموع"
+
+#: .\templates\base.html:211
+msgid "Sverige"
+msgstr "السويد"
+
+#: .\project\settings.py:123
+msgid "Swedish"
+msgstr "السويد"
+
+#: .\orders\templates\order\created.html:30
+msgid ""
+"Tack för att du köper dina proukter hos oss vi hoppas att du kommer bli nöjd"
+" med din beställning."
+msgstr "نشكرك على شراء منتجاتك منا ، ونأمل أن تكون راضيًا عن طلبك."
+
+#: .\templates\cart.html:94
+msgid "Till kassan"
+msgstr "للدفع"
+
+#: .\orders\templates\order\create.html:27
+msgid "Total"
+msgstr "المجموع"
+
+#: .\templates\cart.html:76
+msgid "Totalsumma"
+msgstr "المبلغ الإجمالي"
+
+#: .\project\settings.py:125
+msgid "Turkish"
+msgstr "اللغة التركية"
+
+#: .\templates\base.html:214
+msgid "Türkiye"
+msgstr "تركيا"
+
+#: .\templates\base.html:128
+msgid "Varukorg"
+msgstr "عربة التسوق"
+
+#: .\accounts\templates\registration\password_reset_done.html:8
+msgid ""
+"Vi har skickat instruktioner för hur du ställer in ditt lösenord via e-post."
+" Om de inte har kommit på några minuter, kolla din skräppostmapp."
+msgstr ""
+"لقد أرسلنا تعليمات حول كيفية تعيين كلمة المرور الخاصة بك عبر البريد "
+"الإلكتروني. إذا لم يصلوا خلال بضع دقائق ، فتحقق من مجلد الرسائل غير المرغوب "
+"فيها."
+
+#: .\templates\base.html:185
+msgid "Villkor"
+msgstr "قوانين المنتدى"
+
+#: .\templates\base.html:152
+msgid "categories"
+msgstr "التصنيفات"
+
+#: .\accounts\templates\registration\password_change_done.html:8
+msgid "ditt lösenord har ändrats framgångsrikt, logga in härifrån"
+msgstr "تم تغيير كلمة المرور الخاصة بك بنجاح ، قم بتسجيل الدخول من هنا"
+
+#: .\accounts\templates\registration\signup.html:96
+msgid "efternamn"
+msgstr "لقب"
+
+#: .\accounts\templates\registration\signup.html:89
+msgid "förnamn"
+msgstr "الاسم الأول"
+
+#: .\accounts\templates\registration\password_reset_complete.html:9
+msgid "logga in igen?"
+msgstr "تسجيل الدخول مرة أخرى؟"
+
+#: .\accounts\templates\registration\password_change_form.html:10
+#: .\accounts\templates\registration\password_change_form.html:17
+msgid "Ändra lösenord"
+msgstr "تغيير كلمة المرور"
+
+#: .\accounts\templates\registration\password_reset_form.html:16
+msgid "Återställ lösenord"
+msgstr "إعادة تعيين كلمة المرور"
+
+#: .\accounts\templates\registration\password_reset_confirm.html:30
+msgid "Återställningen av lösenordet misslyckades"
+msgstr "فشل إعادة تعيين كلمة المرور"

@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load currency %}
+{% load static %}
+{% block content %}
+  
+
+<table class="mt-5">
+	
+	<thead class='t-head'>
+		<h1 id="hea">{% trans 'Din Varukorg'%}</h1>
+		<tr>
+			<th>{% trans 'Image' %}</th>
+			<th>{% trans 'Produkt'%}</th>
+			<th>{% trans 'Antal'%}</th>
+			<th>{% trans 'Avlägsna'%}</th>
+			<th>{% trans 'Styckpris'%}</th>
+			<th>{% trans 'Fraktkostnad'%}</th>
+			<th>{% trans 'Summa'%}</th>
+		</tr>
+	</thead>
+	<tbody >
+		{% if cart %}
+			{% for item in cart %}
+				{% with  product=item.product %}
+					<tr>
+						<td>
+							
+								<img src="{{ product.Book_image.url}}" width="100" height="100">
+
+								<!--{#		{% if product.Image %}
+									    {{one_prodcut.pro_image.url}}
+									{% else %}
+										{% static 'images/images.jpg' %}
+									{% endif %}"
+								width="100px"> #}-->
+							</a>
+						</td>
+						
+						<td>{{product.name}}</td>
+						<td>
+							<form  method="post" action="{% url 'cart:cart_add' product.id %}">
+								{% csrf_token %}
+								{{item.update_quantity_form.quantity}}
+								{{item.update_quantity_form.update}}
+								<input id="fo" type="submit" value="Uppdatering">
+							</form>
+						</td>
+						<td>
+							<a href="{% url 'cart:cart_remove' product.id%}">
+								<img src="{% static 'images/trash.png' %} "style="width:35px;"  >
+
+							</a>
+						</td>
+						<td>
+							{{item.price|currency:request.session.currency}}
+						</td>
+						<td>
+							{{item.Frakt}}
+						</td>
+						
+						<td>
+							{{item.total_price|currency:request.session.currency}}:- {{ request.session.currency }}
+						</td>
+					</tr>
+
+				{% endwith %}
+			{% endfor %}
+		{% else %}
+			<tr >
+				<td colspan="4" style="width:100%;text-align:center;">{% trans 'Det finns ingen produkt !'%}</td>
+			</tr>
+		{% endif %}
+				<tr class="total">
+				<td>
+					{% trans 'Totalsumma'%}
+				</td>
+				<td colspan="4"></td>
+				<td class="num">{{cart.get_total_price|currency:request.session.currency}}:- {{ request.session.currency }}</td>
+			</tr> 
+			
+		<!--{# 	<tr class="total">
+				<td>Total</td>
+				<td colspan="4"></td>
+				<td class="num">${{cart.get_total_price_after_discount|floatformat:"2"}}</td>
+			</tr>#}-->
+	</tbody>
+</table>
+<div class="divo  ">
+	
+	
+	<p class="text-right mt-3 mb-5">
+		<a class="" href="{% url 'ost:product_list' %}">{% trans 'Fortsätt handla'%}</a>
+		<a  href="{% url 'orders:order_create' %}">{% trans 'Till kassan'%}</a>  
+	</p>
+</div>
+
+
+<style>
+.divo{
+	margin-bottom: 8%;
+	margin-top: 3%;
+}
+
+.product-detail{
+	
+	font-family: arial;
+	color:#141F21;
+}
+.product-detail img{
+	width:25%;
+	float:left;
+	margin-right:15px;
+	margin-left:150px;
+}
+.product-detail a{
+	text-decoration: none;
+}
+
+.product-detail .price{font-weight: bold;color:#000;}
+
+table{
+	width:70%;
+	margin:0 auto;
+}
+#hea{
+	text-align: center;
+	margin-top: 6%;
+	
+}
+thead{
+	background-color:#dd5c20;
+	display: inline-block;
+	width:100%;
+	color: rgb(8, 8, 8);
+	
+}
+thead th{
+	padding:10px;
+	color:rgb(7, 7, 7);
+	text-align: center;
+	width:185px;
+	
+	}
+
+tbody {
+	display: inline-block;
+	width:100%;
+	
+}
+tbody td{
+	padding:15px;
+	width:200px;
+}
+tbody .total{
+	color: rgb(7, 6, 6);
+	background-color:#dd5c20;
+	width:100%;
+	display: inline-table;
+	
+}
+#fo{
+	background-color:#dd5c20 ;
+	color:rgb(8, 8, 8);
+	
+}
+tbody .total td{
+	width:50%;
+}
+tbody .total .num{
+	float:left;
+	margin-left: 100px;
+	
+}
+
+.text-right{
+	float:right;
+	margin-right:200px;
+}
+.text-right :first-child{
+	padding:10px;
+	text-decoration: none;
+	background-color:rgb(184, 241, 137); 
+}
+.text-right :last-child {
+	padding:10px;
+	text-decoration: none;
+	background-color:#dd5c20; 
+	color:#fff;
+	
+}
+.text-right  :hover{
+	background-color: #dd5c20;
+	color: #141F21;
+}
+</style>
+{% endblock content %}
+
+
+
+
+
+
+

@@ -1,0 +1,361 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"Report-Msgid-Bugs-To: webmaster@localhost\n"
+"POT-Creation-Date: 2021-10-18 10:46:44\n"
+"PO-Revision-Date: 2021-10-18 10:46:44\n"
+"Last-Translator: Server <root@localhost>\n"
+"Language-Team: English <webmaster@localhost>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .\accounts\templates\registration\signup.html:129
+msgid " Har du redan ett konto?"
+msgstr "zaten bir hesabın var mı?"
+
+#: .\templates\all_product.html:46 .\templates\base.html:155
+msgid "All Products"
+msgstr "Tüm ürünler"
+
+#: .\accounts\templates\registration\password_reset_confirm.html:9
+msgid "Ange (och bekräfta) ditt nya lösenord."
+msgstr "Yeni şifrenizi girin (ve onaylayın)."
+
+#: .\templates\cart.html:15
+msgid "Antal"
+msgstr "Miktar"
+
+#: .\accounts\templates\registration\login.html:93
+msgid "Användarnamn..."
+msgstr "Kullanıcı adı..."
+
+#: .\accounts\templates\registration\signup.html:82
+msgid "Användnamn"
+msgstr "Kullanıcı adı"
+
+#: .\project\settings.py:126
+msgid "Arabic"
+msgstr "Arapça"
+
+#: .\templates\cart.html:16
+msgid "Avlägsna"
+msgstr "Kaldırmak"
+
+#: .\orders\templates\order\create.html:43
+msgid "Avslutad"
+msgstr "Tamamlanmış"
+
+#: .\accounts\templates\registration\password_reset_confirm.html:20
+msgid "Bekräfta lösenord:"
+msgstr "Şifreyi Onayla:"
+
+#: .\orders\templates\order\create.html:62
+msgid "Beställa"
+msgstr "Emir"
+
+#: .\orders\templates\order\created.html:36
+msgid "Beställningskod :"
+msgstr "Sipariş kodu:"
+
+#: .\orders\templates\order\create.html:22
+msgid "Bild"
+msgstr "Resim"
+
+#: .\accounts\templates\registration\login.html:113 .\templates\base.html:56
+msgid "Bli Medlem"
+msgstr "Üye olmak"
+
+#: .\templates\one_product.html:101
+msgid "Datum:"
+msgstr "Tarih:"
+
+#: .\templates\one_product.html:86
+msgid "Description"
+msgstr "Açıklama"
+
+#: .\templates\cart.html:71
+msgid "Det finns ingen produkt !"
+msgstr "Ürün yok!"
+
+#: .\templates\cart.html:11
+msgid "Din Varukorg"
+msgstr "Alışveriş sepetiniz"
+
+#: .\orders\templates\order\create.html:15
+msgid "Din beställa"
+msgstr "Siparişiniz"
+
+#: .\orders\templates\order\created.html:35
+msgid "Din beställning är klar"
+msgstr "siparişiniz hazır"
+
+#: .\accounts\templates\registration\signup.html:103
+msgid "E-post.."
+msgstr "e-posta.."
+
+#: .\templates\one_product.html:57 .\templates\one_product.html:59
+msgid "Endast:"
+msgstr "Bir tek:"
+
+#: .\project\settings.py:124
+msgid "English"
+msgstr "İngilizce"
+
+#: .\templates\cart.html:93
+msgid "Fortsätt handla"
+msgstr "Alışverişe devam"
+
+#: .\templates\cart.html:18
+msgid "Fraktkostnad"
+msgstr "Nakliye maliyeti"
+
+#: .\accounts\templates\registration\login.html:110
+msgid "Glömt lösenord ?"
+msgstr "Parolanızı mı unuttunuz ?"
+
+#: .\accounts\templates\registration\login.html:113
+msgid "Har inget konto?"
+msgstr "Hesabın yok mu?"
+
+#: .\orders\templates\order\create.html:45
+msgid "I väntan på"
+msgstr "Askıda olması"
+
+#: .\templates\cart.html:13
+msgid "Image"
+msgstr "resim"
+
+#: .\templates\one_product.html:110
+msgid "Inga recensioner ännu..."
+msgstr "Henüz yorum yok..."
+
+#: .\templates\one_product.html:137
+msgid "Innehåll"
+msgstr "İçerik"
+
+#: .\accounts\templates\registration\logged_out.html:12
+msgid "Klicka här för att logga in igen."
+msgstr "Tekrar giriş yapmak için burayı tıklayın."
+
+#: .\templates\base.html:189
+msgid "Kundservice"
+msgstr "Müşteri servisi"
+
+#: .\orders\templates\order\create.html:26
+msgid "Kvantitet"
+msgstr "Miktar"
+
+#: .\orders\templates\order\created.html:33
+msgid "Kära:"
+msgstr "Canım:"
+
+#: .\accounts\templates\registration\login.html:84
+msgid "LOGGA IN"
+msgstr "KAYIT OLMAK"
+
+#: .\accounts\templates\registration\signup.html:129 .\templates\base.html:49
+msgid "Logga in"
+msgstr "Kayıt olmak"
+
+#: .\templates\one_product.html:152
+msgid "Logga in för att lägga till recension!"
+msgstr "Yorum eklemek için giriş yapın!"
+
+#: .\templates\base.html:42
+msgid "Logga ut"
+msgstr "Çıkış Yap"
+
+#: .\templates\one_product.html:77
+msgid "Lägg i kundvagn"
+msgstr "Alışveriş Sepetine Ekle"
+
+#: .\accounts\templates\registration\password_reset_confirm.html:31
+msgid ""
+"Länken för återställning av lösenord var ogiltig, möjligen för att den redan"
+" har använts. Be om en ny lösenordsåterställning."
+msgstr ""
+"Parola sıfırlama bağlantısı, muhtemelen zaten kullanılmış olduğu için "
+"geçersizdi. Yeni bir parola sıfırlama isteğinde bulunun."
+
+#: .\accounts\templates\registration\login.html:99
+msgid "Lösenord..."
+msgstr "Parola..."
+
+#: .\accounts\templates\registration\password_reset_complete.html:8
+msgid "Lösenordet har ändrats!"
+msgstr "Şifre değiştirildi!"
+
+#: .\templates\all_product.html:101
+msgid "Mer"
+msgstr "Daha"
+
+#: .\templates\all_product.html:134 .\templates\all_product.html:138
+msgid "Next"
+msgstr "Sonraki"
+
+#: .\accounts\templates\registration\password_reset_confirm.html:15
+msgid "Nytt lösenord:"
+msgstr "Yeni Şifre:"
+
+#: .\templates\base.html:192
+msgid "Om oss"
+msgstr "Hakkımızda"
+
+#: .\templates\all_product.html:113 .\templates\all_product.html:117
+msgid "Previous"
+msgstr "Öncesi"
+
+#: .\orders\templates\order\create.html:25
+msgid "Pris"
+msgstr "Ödül"
+
+#: .\orders\templates\order\create.html:23 .\templates\cart.html:14
+msgid "Produkt"
+msgstr "Ürün"
+
+#: .\templates\one_product.html:94
+msgid "Recensioner"
+msgstr "İncelemeler"
+
+#: .\accounts\templates\registration\signup.html:122
+msgid "Register Account"
+msgstr "Hesap Kaydet"
+
+#: .\accounts\templates\registration\signup.html:70
+msgid "Registrera konto"
+msgstr "Hesabı kaydet"
+
+#: .\templates\base.html:167
+msgid "Search"
+msgstr "Arama"
+
+#: .\templates\base.html:166
+msgid "Search . . ."
+msgstr "Arama. . ."
+
+#: .\templates\one_product.html:147
+msgid "Skicka in"
+msgstr "Göndermek"
+
+#: .\accounts\templates\registration\signup.html:110
+msgid "Skriv in lösenord..."
+msgstr "Skriv in lösenord..."
+
+#: .\accounts\templates\registration\signup.html:117
+msgid "Skriv lösenordet igen..."
+msgstr "Parolanı Gir ..."
+
+#: .\orders\templates\order\create.html:10
+msgid "Snabbkassa"
+msgstr "Yazar kasa"
+
+#: .\orders\templates\order\create.html:21
+msgid "Sno."
+msgstr "Büküm."
+
+#: .\orders\templates\order\create.html:28
+msgid "Status"
+msgstr "Durum"
+
+#: .\templates\one_product.html:121
+msgid "Stjärnor"
+msgstr "Yıldızlar"
+
+#: .\templates\one_product.html:102
+msgid "Stjärnor:"
+msgstr "Yıldızlar"
+
+#: .\templates\cart.html:17
+msgid "Styckpris"
+msgstr "Birim fiyat"
+
+#: .\templates\cart.html:19
+msgid "Summa"
+msgstr "Miktar"
+
+#: .\templates\base.html:211
+msgid "Sverige"
+msgstr "İsveç"
+
+#: .\project\settings.py:123
+msgid "Swedish"
+msgstr "İsveç"
+
+#: .\orders\templates\order\created.html:30
+msgid ""
+"Tack för att du köper dina proukter hos oss vi hoppas att du kommer bli nöjd"
+" med din beställning."
+msgstr ""
+"Ürünlerinizi bizden satın aldığınız için teşekkür ederiz, umarız "
+"siparişinizden memnun kalırsınız."
+
+#: .\templates\cart.html:94
+msgid "Till kassan"
+msgstr "Kontrol etmek"
+
+#: .\orders\templates\order\create.html:27
+msgid "Total"
+msgstr "Toplam"
+
+#: .\templates\cart.html:76
+msgid "Totalsumma"
+msgstr "Toplam tutar"
+
+#: .\project\settings.py:125
+msgid "Turkish"
+msgstr "Türk"
+
+#: .\templates\base.html:214
+msgid "Türkiye"
+msgstr "Türk"
+
+#: .\templates\base.html:128
+msgid "Varukorg"
+msgstr "Alışveriş Sepeti"
+
+#: .\accounts\templates\registration\password_reset_done.html:8
+msgid ""
+"Vi har skickat instruktioner för hur du ställer in ditt lösenord via e-post."
+" Om de inte har kommit på några minuter, kolla din skräppostmapp."
+msgstr ""
+"Parolanızı e-posta yoluyla nasıl ayarlayacağınızla ilgili talimatları "
+"gönderdik. Birkaç dakika içinde gelmezlerse, spam klasörünüzü kontrol edin."
+
+#: .\templates\base.html:185
+msgid "Villkor"
+msgstr "Şartlar"
+
+#: .\templates\base.html:152
+msgid "categories"
+msgstr "kategoriler"
+
+#: .\accounts\templates\registration\password_change_done.html:8
+msgid "ditt lösenord har ändrats framgångsrikt, logga in härifrån"
+msgstr "şifreniz başarıyla değiştirildi, buradan giriş yapın"
+
+#: .\accounts\templates\registration\signup.html:96
+msgid "efternamn"
+msgstr "soyadı"
+
+#: .\accounts\templates\registration\signup.html:89
+msgid "förnamn"
+msgstr "ilk adı"
+
+#: .\accounts\templates\registration\password_reset_complete.html:9
+msgid "logga in igen?"
+msgstr "Tekrar giriş yap?"
+
+#: .\accounts\templates\registration\password_change_form.html:10
+#: .\accounts\templates\registration\password_change_form.html:17
+msgid "Ändra lösenord"
+msgstr "Şifre değiştir"
+
+#: .\accounts\templates\registration\password_reset_form.html:16
+msgid "Återställ lösenord"
+msgstr "şifreyi yenile"
+
+#: .\accounts\templates\registration\password_reset_confirm.html:30
+msgid "Återställningen av lösenordet misslyckades"
+msgstr "Şifre sıfırlama başarısız oldu"

@@ -1,0 +1,431 @@
+{% extends 'base.html'%}
+{% load i18n %}
+{% load currency %}
+{% load static%}
+
+{% block content %}
+
+
+
+<!--  -->
+ <main class="">
+    <div class="container dark-grey-text "> 
+<div class="container   ">
+        <div id="fle" class="container  align-self-start ">
+            <section id="default" class="padding-top0 ">
+                <div class="row ">
+                    <div class="large-5 column">
+                        <div class="xzoom-container">
+                            <img class="xzoom " id="xzoom-default " src="{{one_prodcut.Book_image.url}}"
+                                xoriginal="{{one_prodcut.Book_image.url}}" />
+                            <div class="xzoom-thumbs">
+                                {% for im in images %}
+                                <a href="{{im.image.url}}"> <img class="xzoom-gallery" src="{{im.image.url}}"
+                                        xpreview="{{im.image.url}}"></a>
+                                {%endfor %}
+                                <a href="{{one_prodcut.Book_image.url}}"> <img class="xzoom-gallery" width="80"
+                                        src="{{one_prodcut.Book_image.url}}"> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+            <!--Grid row-->
+            <div class="tt row wow fadeIn">
+                <!--style="margin-left: 700px;margin-top:-500px"-->
+                <!--Grid column-->
+                <div class="col-mr-5 ml-5 p-1 ">
+                    <!--Content-->
+                    <div class="p-4">
+                        
+                        <p class="lead font-weight-bold"> </p>
+                        <p class="lead">
+                            <strong>
+                                <span class="text-start fs-2 fw-bolder ">{{one_prodcut.Book_name}} </span>
+                            
+                        </p>
+                        <p class="text-center fs-4 fw-bolder">{{one_prodcut.product_info|safe }}</p></strong>
+                        <p class="lead">
+                            <span class=" font-weight-bold text-danger" style="width: 8rem;">
+                                {% if one_prodcut.Discountprice > 0 %}
+                                <del><span style="color:#0a0a0a;">{{ one_prodcut.price|currency:request.session.currency}}:- {{ request.session.currency }}</span></del>
+                                <span>{% trans 'Endast:'%} {{ one_prodcut.Discountprice}}:-{{ request.session.currency }}</span>
+                                {%else%}
+                                <span>{% trans 'Endast:'%} {{ one_prodcut.price|currency:request.session.currency}}:- {{ request.session.currency }}</span>
+
+
+
+                                {%endif%}
+                               
+
+                    </div>
+              
+                    
+
+
+                    <div class="add_cart ">
+                        <form id="fom" method='post' action="{% url 'cart:cart_add' product.id %}">
+                            {% csrf_token %}
+                            {{item.update_quantity_form.quantity}}
+                            {{item.update_quantity_form.update}}
+                            {{cart_product_form}}
+                            <input class="btn btn-danger" type="submit" value="{% trans 'Lägg i kundvagn' %}">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Grid row-->
+        <hr>
+        <p class="lead font-weight-bold  text-danger  text-center">{% trans 'Description' %}</p>
+        <div class="container mt-5">
+        <p>{{one_prodcut.descrip|safe }}</p>
+        </div>
+        <!--Grid row-->
+
+
+        <!-- prodcut reviews -->
+
+        <hr>
+        <h2 class="subtitle text-center mb-5 text-danger">{% trans 'Recensioner' %}</h2>
+        <div class="reviews-wrapper">
+            {% for review in one_prodcut.reviews.all %}
+            <div class="alert alert-danger" role="alert">
+                <p>
+                    <strong>{{review.user}}</strong>
+                    <br>
+                    <strong>{% trans 'Datum:' %} </strong>{{ review.date_added|date:"Y-m-d" }},
+                    <strong>{% trans 'Stjärnor:' %}</strong>{{ review.stars }}
+
+
+                </p>
+                {{ review.content }}
+            </div>
+            {% empty %}
+            <div class="alert alert-danger" role="alert">
+            {% trans 'Inga recensioner ännu...' %}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="alert alert-danger" role="alert">
+            {% if request.user.is_authenticated %}
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="field">
+                    <label>{% trans 'Stjärnor'%}</label>
+
+                    <div clas="control">
+                        <div class="select">
+                            <select name="stars">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3" selected>3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>{% trans 'Innehåll' %}</label>
+
+                    <div class="control">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            name="content"></textarea>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control mt-2">
+                        <button class="button is-success">{% trans 'Skicka in' %}</button>
+                    </div>
+                </div>
+            </form>
+            {% else %}
+            <p>{% trans 'Logga in för att lägga till recension!' %}</p>
+            {% endif %}
+        </div>
+    </div>
+    <!---->
+
+
+
+
+
+
+
+
+    </div>
+</main>
+
+
+<style>
+   
+
+    
+ 
+@media (min-width : 1300px) {
+   .xzoom-gallery {
+        margin-top: 19px;
+        margin-left: -14px;
+        object-fit: scale-down;
+        
+
+    }
+    .xzoom {
+        margin-top: 40px;
+        margin-left: -19%;
+        object-fit: scale-down;
+        max-width: 44em;
+        min-width: 44em;
+        max-height: 310px;
+        min-height: 310px;
+        display:inline;
+
+    }
+    #fle{
+        display: flex;
+    }
+    .tt{
+       font-size: 18px;
+       margin-top: -20px;
+       margin-left: -230px;
+    }
+    .lead{
+       font-size: 19px; 
+    }
+    .add_cart{
+        font-size:19px ;
+        margin-left: 24px;
+    } 
+     
+  }
+
+  @media (max-width : 1300px) {
+      .xzoom-gallery {
+        margin-top: 10px;
+        object-fit: scale-down;
+
+    }
+
+    .xzoom-gallery {
+        max-width: 80px;
+        min-width: 80px;
+        max-height: 80px;
+        min-height: 80px;
+    }
+
+    .xzoom {
+        margin-top: 40px;
+        object-fit: scale-down;
+        max-width: 580px;
+        min-width: 580px;
+        max-height: 480px;
+        min-height: 480px;
+
+    }
+     .main{
+      
+      position: absolute;
+    }
+    
+     
+  }
+
+
+  @media (max-width : 1300px) {
+     
+    
+     
+  }
+  @media (min-width : 350px) and (max-width : 1300px) {
+      .xzoom-gallery {
+        margin-top: 3px;
+        margin-left: -27px;
+        object-fit: scale-down;
+        
+
+    }
+
+    .xzoom-gallery {
+        max-width: 80px;
+        min-width: 80px;
+        max-height: 80px;
+        min-height: 80px;
+    }
+
+    .xzoom {
+        margin-left: -10%;
+        object-fit:cover;
+        max-width: 22rem;
+        min-width: 22rem;
+        max-height: 280px;
+        min-height: 280px;
+        
+
+    }
+    #default{
+        padding: 0;
+        border: 0;
+        margin-top: -11%;
+    }
+    .tt{
+        font-size: 14px;
+       margin-top: -20px;
+       margin-left: -82px;
+       font-family:Georgia, 'Times New Roman', Times, serif;
+    }
+    .lead{
+       font-size: 16px; 
+       font-family:Georgia, 'Times New Roman', Times, serif;
+    }
+    .add_cart{
+        font-size:16px ;
+        margin-left: 24px;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+    }
+  }
+  @media   (min-width : 380px) and (max-width : 1300px) {
+     
+      .xzoom-gallery {
+        margin-top: -10px;
+        margin-left: -20px;
+        object-fit: scale-down;
+        
+
+    }
+    .xzoom {
+        
+        margin-left: -6%;
+        object-fit: scale-down;
+        max-width: 24em;
+        min-width: 24em;
+        max-height: 280px;
+        min-height: 280px;
+
+    }
+
+  }
+
+  @media (min-width : 577px) and (max-width : 1300px) {
+       .xzoom-gallery {
+        margin-top: 5px;
+        margin-left: 1px;
+        object-fit: scale-down;
+        
+
+    }
+   .xzoom {
+        margin-top: 90px;
+        margin-left: -19%;
+        object-fit: scale-down;
+        max-width: 37em;
+        min-width: 37em;
+        max-height: 280px;
+        min-height: 280px;
+
+    }
+  }
+  @media (min-width : 769px) and (max-width : 1300px) {
+   .xzoom-gallery {
+        margin-top: 19px;
+        margin-left: 1px;
+        object-fit: scale-down;
+        
+
+    }
+
+    
+
+    .xzoom {
+        
+        margin-left: -19%;
+        object-fit: scale-down;
+        max-width: 44em;
+        min-width: 44em;
+        max-height: 310px;
+        min-height: 310px;
+
+    }
+    .tt{
+        font-size: 18px;
+       margin-top: -20px;
+       margin-left: -82px;
+    }
+    .lead{
+       font-size: 19px; 
+    }
+    .add_cart{
+        font-size:19px ;
+        margin-left: 24px;
+    }
+
+  }
+  @media (min-width : 990px) and (max-width : 1300px) {
+    .xzoom-gallery {
+        margin-top: 19px;
+        margin-left: -14px;
+        object-fit: scale-down;
+        
+
+    }
+    .xzoom {
+        margin-top: 140px;
+        margin-left: -19%;
+        object-fit: scale-down;
+        max-width: 44em;
+        min-width: 44em;
+        max-height: 310px;
+        min-height: 310px;
+        display:inline;
+
+    }
+    #fle{
+        display: flex;
+    }
+    .tt{
+       font-size: 18px;
+       margin-top: -20px;
+       margin-left: -230px;
+    }
+    .lead{
+       font-size: 19px; 
+    }
+    .add_cart{
+        font-size:19px ;
+        margin-left: 24px;
+    }
+  }
+  @media (min-width : 1181px)  {
+    
+  }
+    
+
+
+  @media (min-width : 577px) and (max-width : 1300px) {
+   
+  }
+  @media (min-width : 769px) and (max-width : 1300px) {
+  
+  }
+  @media (min-width : 990px) and (max-width : 1300px) {
+    
+  }
+  @media (min-width : 1181px)  {
+    
+  }
+
+</style>
+
+
+{% endblock content %}
